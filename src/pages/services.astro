@@ -1,12 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Conciergerie de Luxe à Genève | Services Premium | Swiss Prestige" description="Service de conciergerie de luxe à Genève. Sélection, livraison premium et gestion de collections privées de produits de prestige en Suisse.">
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero__bg"></div>
+    <div class="hero__bg" style={`background-image: url('${base}images/scenes/bg-bar-night.jpg')`}></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <div class="t-label">Conciergerie de luxe</div>
@@ -61,7 +62,7 @@ import Layout from '../layouts/Layout.astro';
         </ul>
       </div>
       <div class="conciergerie__image">
-        <img src="/images/vodka/hoverla-scene.jpg" alt="Verres Hoverla — service de conciergerie Swiss Prestige" />
+        <img src={`${base}images/vodka/hoverla-scene.jpg`} alt="Verres Hoverla — service de conciergerie Swiss Prestige" />
       </div>
     </div>
   </section>
@@ -71,7 +72,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="app-section__inner">
       <div class="app-section__visual">
         <div class="app-section__phone">
-          <img src="/images/brand/SP_crown_gold_transparent.svg" alt="Swiss Prestige — application mobile de conciergerie" class="app-section__icon" />
+          <img src={`${base}images/brand/SP_crown_gold_transparent.svg`} alt="Swiss Prestige — application mobile de conciergerie" class="app-section__icon" />
           <div class="app-section__phone-label">Bientôt disponible</div>
         </div>
       </div>
@@ -131,11 +132,11 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- CTA -->
   <section class="services-cta">
-    <div class="services-cta__bg"></div>
+    <div class="services-cta__bg" style={`background-image: url('${base}images/scenes/bg-mountain.jpg')`}></div>
     <div class="services-cta__content">
       <h2 class="services-cta__title">Parlons de<br/>votre projet</h2>
       <p class="t-body" style="text-align:center; max-width:500px; margin:0 auto 40px;">Commande personnelle, événement d'entreprise ou collection privée — contactez notre équipe pour en discuter.</p>
-      <a href="/contact" class="btn-primary">Nous contacter</a>
+      <a href={`${base}contact`} class="btn-primary">Nous contacter</a>
     </div>
   </section>
 
@@ -155,7 +156,6 @@ import Layout from '../layouts/Layout.astro';
   .hero__bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/scenes/bg-bar-night.jpg');
     background-size: cover;
     background-position: center;
     filter: brightness(0.25);
@@ -457,7 +457,6 @@ import Layout from '../layouts/Layout.astro';
   .services-cta__bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/scenes/bg-mountain.jpg');
     background-size: cover;
     background-position: center;
     filter: brightness(0.2);

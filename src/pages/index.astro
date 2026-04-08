@@ -1,12 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Swiss Prestige | Redistribution de Produits de Luxe en Suisse" description="Swiss Prestige, votre partenaire exclusif pour la redistribution de produits de luxe en Suisse. Vodka Hoverla, cigares Mont Noir et service de conciergerie premium à Genève.">
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero__bg"></div>
+    <div class="hero__bg" style={`background-image: url('${base}images/vodka/hoverla-scene.jpg')`}></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <!-- crown removed -->
@@ -57,14 +58,14 @@ import Layout from '../layouts/Layout.astro';
   <section class="product-row">
     <div class="product-row__inner">
       <div class="product-row__image">
-        <img src="/images/vodka/hoverla-gamme-bar.jpg" alt="Vodka Hoverla — gamme complète de sept saveurs artisanales" />
+        <img src={`${base}images/vodka/hoverla-gamme-bar.jpg`} alt="Vodka Hoverla — gamme complète de sept saveurs artisanales" />
       </div>
       <div class="product-row__text">
         <div class="t-label">Vodka artisanale</div>
         <h2 class="product-row__title">Hoverla</h2>
         <div class="divider-gold"></div>
         <p class="t-body">Distillée avec l'eau des Carpates et du blé d'altitude ukrainien. Sept infusions distinctes — de l'original cristallin au miel de montagne. Introuvable en Suisse avant Swiss Prestige.</p>
-        <a href="/vodka" class="btn-primary">Explorer la gamme</a>
+        <a href={`${base}vodka`} class="btn-primary">Explorer la gamme</a>
       </div>
     </div>
   </section>
@@ -73,14 +74,14 @@ import Layout from '../layouts/Layout.astro';
   <section class="product-row product-row--reversed">
     <div class="product-row__inner">
       <div class="product-row__image">
-        <img src="/images/cigars/csco-coffret-ouvert.jpg" alt="Cigares Mont Noir — coffret ouvert avec cigares roulés main" />
+        <img src={`${base}images/cigars/csco-coffret-ouvert.jpg`} alt="Cigares Mont Noir — coffret ouvert avec cigares roulés main" />
       </div>
       <div class="product-row__text">
         <div class="t-label">Cigares premium</div>
         <h2 class="product-row__title">Mont Noir</h2>
         <div class="divider-gold"></div>
         <p class="t-body">Roulés à la main en République Dominicaine par des maîtres artisans. Tabac sélectionné feuille par feuille, affinage de plusieurs mois. Proposés en coffrets numérotés, exclusivement via notre conciergerie.</p>
-        <a href="/cigares" class="btn-primary">Découvrir la collection</a>
+        <a href={`${base}cigares`} class="btn-primary">Découvrir la collection</a>
       </div>
     </div>
   </section>
@@ -93,21 +94,21 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="app-teaser__title">L'application<br/>conciergerie</h2>
         <div class="divider-gold"></div>
         <p class="t-body">Parcourez nos sélections, commandez en quelques gestes, suivez votre livraison en temps réel. Tout le service Swiss Prestige, accessible depuis votre téléphone.</p>
-        <a href="/services" class="btn-secondary">En savoir plus</a>
+        <a href={`${base}services`} class="btn-secondary">En savoir plus</a>
       </div>
       <div class="app-teaser__visual">
-        <img src="/images/brand/SP_crown_gold_transparent.svg" alt="Swiss Prestige — application de conciergerie de luxe" class="app-teaser__icon" />
+        <img src={`${base}images/brand/SP_crown_gold_transparent.svg`} alt="Swiss Prestige — application de conciergerie de luxe" class="app-teaser__icon" />
       </div>
     </div>
   </section>
 
   <!-- CTA SECTION -->
   <section class="cta-section">
-    <div class="cta-section__bg"></div>
+    <div class="cta-section__bg" style={`background-image: url('${base}images/scenes/bg-bar-luxe.jpg')`}></div>
     <div class="cta-section__content">
       <h2 class="cta-section__title">Écrivez-nous</h2>
       <p class="t-body" style="text-align:center; max-width:600px; margin:0 auto 40px;">Dites-nous ce que vous aimez. Notre équipe vous recontacte sous 24 heures pour composer votre première sélection sur mesure.</p>
-      <a href="/contact" class="btn-primary">Prendre contact</a>
+      <a href={`${base}contact`} class="btn-primary">Prendre contact</a>
     </div>
   </section>
 
@@ -128,7 +129,6 @@ import Layout from '../layouts/Layout.astro';
   .hero__bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/vodka/hoverla-scene.jpg');
     background-size: cover;
     background-position: center;
     filter: brightness(0.35);
@@ -364,7 +364,6 @@ import Layout from '../layouts/Layout.astro';
   .cta-section__bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/scenes/bg-bar-luxe.jpg');
     background-size: cover;
     background-position: center;
     filter: brightness(0.25);

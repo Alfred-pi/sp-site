@@ -1,14 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 
 const variants = [
-  { name: "Original", desc: "La pureté absolue. Eau de source des Carpates et blé ukrainien.", img: "/images/vodka/hoverla-official-1.jpg" },
-  { name: "Honey", desc: "Miel de fleurs sauvages des montagnes. Douceur et caractère.", img: "/images/vodka/hoverla-official-2.jpg" },
-  { name: "Birch", desc: "Sève de bouleau infusée. Fraîcheur minérale unique.", img: "/images/vodka/hoverla-official-3.jpg" },
-  { name: "Pepper", desc: "Piment rouge des Carpates. Chaleur et intensité.", img: "/images/vodka/hoverla-official-4.jpg" },
-  { name: "Cranberry", desc: "Canneberges sauvages cueillies à maturité. Fruité et vif.", img: "/images/vodka/hoverla-official-5.jpg" },
-  { name: "Herbal", desc: "Herbes aromatiques des prairies d'altitude. Complexe et subtil.", img: "/images/vodka/hoverla-official-6.jpg" },
-  { name: "Lemon", desc: "Zestes de citron frais. Vivacité et élégance.", img: "/images/vodka/hoverla-official-7.jpg" },
+  { name: "Original", desc: "La pureté absolue. Eau de source des Carpates et blé ukrainien.", img: `${base}images/vodka/hoverla-official-1.jpg` },
+  { name: "Honey", desc: "Miel de fleurs sauvages des montagnes. Douceur et caractère.", img: `${base}images/vodka/hoverla-official-2.jpg` },
+  { name: "Birch", desc: "Sève de bouleau infusée. Fraîcheur minérale unique.", img: `${base}images/vodka/hoverla-official-3.jpg` },
+  { name: "Pepper", desc: "Piment rouge des Carpates. Chaleur et intensité.", img: `${base}images/vodka/hoverla-official-4.jpg` },
+  { name: "Cranberry", desc: "Canneberges sauvages cueillies à maturité. Fruité et vif.", img: `${base}images/vodka/hoverla-official-5.jpg` },
+  { name: "Herbal", desc: "Herbes aromatiques des prairies d'altitude. Complexe et subtil.", img: `${base}images/vodka/hoverla-official-6.jpg` },
+  { name: "Lemon", desc: "Zestes de citron frais. Vivacité et élégance.", img: `${base}images/vodka/hoverla-official-7.jpg` },
 ];
 ---
 
@@ -16,7 +17,7 @@ const variants = [
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero__bg"></div>
+    <div class="hero__bg" style={`background-image: url('${base}images/scenes/hoverla-mountain.jpg')`}></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <div class="t-label">Vodka artisanale ukrainienne</div>
@@ -36,7 +37,7 @@ const variants = [
         <p class="t-body">Chaque bouteille est distillée en petits lots. Sept infusions différentes — du classique au miel de montagne, en passant par la sève de bouleau — qui explorent chacune un aspect de ce terroir unique. Hoverla porte le nom du plus haut sommet d'Ukraine. Ce n'est pas un hasard.</p>
       </div>
       <div class="story__image">
-        <img src="/images/vodka/hoverla-official-1.jpg" alt="Bouteille Hoverla Original — vodka artisanale premium des Carpates" />
+        <img src={`${base}images/vodka/hoverla-official-1.jpg`} alt="Bouteille Hoverla Original — vodka artisanale premium des Carpates" />
       </div>
     </div>
   </section>
@@ -69,7 +70,7 @@ const variants = [
   <!-- LINEUP -->
   <section class="lineup">
     <div class="lineup__inner">
-      <img src="/images/vodka/hoverla-scene.jpg" alt="Verres Hoverla Premium Vodka — dégustation" class="lineup__img" />
+      <img src={`${base}images/vodka/hoverla-scene.jpg`} alt="Verres Hoverla Premium Vodka — dégustation" class="lineup__img" />
     </div>
   </section>
 
@@ -78,7 +79,7 @@ const variants = [
     <div class="vodka-cta__inner">
       <h2 class="vodka-cta__title">Commander Hoverla</h2>
       <p class="t-body" style="text-align:center; max-width:500px; margin:0 auto 40px;">Distribuée exclusivement par Swiss Prestige en Suisse. Contactez notre équipe pour choisir vos saveurs.</p>
-      <a href="/contact" class="btn-primary">Passer commande</a>
+      <a href={`${base}contact`} class="btn-primary">Passer commande</a>
     </div>
   </section>
 
@@ -98,7 +99,6 @@ const variants = [
   .hero__bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/scenes/hoverla-mountain.jpg');
     background-size: cover;
     background-position: center;
     filter: brightness(0.3);

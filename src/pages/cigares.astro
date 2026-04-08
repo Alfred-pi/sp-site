@@ -1,12 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Cigares Mont Noir | Cigares Premium Roulés Main | Swiss Prestige" description="Cigares Mont Noir, roulés à la main avec un tabac premium sélectionné. Coffrets d'exception disponibles via le service de conciergerie Swiss Prestige.">
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero__bg"></div>
+    <div class="hero__bg" style={`background-image: url('${base}images/cigars/csco-coffret-ouvert.jpg')`}></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <div class="t-label">Cigares premium roulés main</div>
@@ -26,7 +27,7 @@ import Layout from '../layouts/Layout.astro';
         <p class="t-body">L'affinage dure plusieurs mois. Le résultat : un cigare au profil aromatique dense — boisé, légèrement épicé, avec une finale longue et complexe. Mont Noir s'adresse à ceux qui prennent le temps de savourer.</p>
       </div>
       <div class="story__image">
-        <img src="/images/cigars/csco-coffret-ouvert.jpg" alt="Coffret Mont Noir ouvert — cigares premium roulés à la main" />
+        <img src={`${base}images/cigars/csco-coffret-ouvert.jpg`} alt="Coffret Mont Noir ouvert — cigares premium roulés à la main" />
       </div>
     </div>
   </section>
@@ -43,7 +44,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="collection__grid">
         <div class="collection-card">
           <div class="collection-card__image">
-            <img src="/images/cigars/csco-coffrets-cigare.jpg" alt="Coffrets cigares Mont Noir — sélection signature" />
+            <img src={`${base}images/cigars/csco-coffrets-cigare.jpg`} alt="Coffrets cigares Mont Noir — sélection signature" />
           </div>
           <div class="collection-card__info">
             <h3 class="collection-card__name">Coffret Signature</h3>
@@ -53,7 +54,7 @@ import Layout from '../layouts/Layout.astro';
 
         <div class="collection-card">
           <div class="collection-card__image">
-            <img src="/images/cigars/csco-coffret-ouvert.jpg" alt="Cigare Mont Noir — détail de la bague et humidor" />
+            <img src={`${base}images/cigars/csco-coffret-ouvert.jpg`} alt="Cigare Mont Noir — détail de la bague et humidor" />
           </div>
           <div class="collection-card__info">
             <h3 class="collection-card__name">Réserve Privée</h3>
@@ -63,7 +64,7 @@ import Layout from '../layouts/Layout.astro';
 
         <div class="collection-card">
           <div class="collection-card__image">
-            <img src="/images/cigars/csco-coffret-promo.jpg" alt="Coffret Mont Noir édition limitée — cigares numérotés" />
+            <img src={`${base}images/cigars/csco-coffret-promo.jpg`} alt="Coffret Mont Noir édition limitée — cigares numérotés" />
           </div>
           <div class="collection-card__info">
             <h3 class="collection-card__name">Édition Limitée</h3>
@@ -78,14 +79,14 @@ import Layout from '../layouts/Layout.astro';
   <section class="pairing">
     <div class="pairing__inner">
       <div class="pairing__image">
-        <img src="/images/vodka/hoverla-cigare-gros-plan.jpg" alt="Accord cigare Mont Noir et vodka Hoverla — dégustation premium" />
+        <img src={`${base}images/vodka/hoverla-cigare-gros-plan.jpg`} alt="Accord cigare Mont Noir et vodka Hoverla — dégustation premium" />
       </div>
       <div class="pairing__text">
         <div class="t-label">L'accord parfait</div>
         <h2 class="pairing__heading">Mont Noir<br/>& Hoverla</h2>
         <div class="divider-gold"></div>
         <p class="t-body">La pureté minérale d'Hoverla nettoie le palais entre chaque tirage et révèle des arômes que le cigare seul ne libère pas. L'Original pour un Signature, le Miel pour une Réserve — chaque combinaison a été testée par nos équipes pour trouver l'équilibre parfait.</p>
-        <a href="/vodka" class="btn-primary">Découvrir Hoverla</a>
+        <a href={`${base}vodka`} class="btn-primary">Découvrir Hoverla</a>
       </div>
     </div>
   </section>
@@ -95,7 +96,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="cigare-cta__inner">
       <h2 class="cigare-cta__title">Commander Mont Noir</h2>
       <p class="t-body" style="text-align:center; max-width:500px; margin:0 auto 40px;">Nos coffrets sont disponibles exclusivement via Swiss Prestige. Contactez notre équipe pour composer votre sélection.</p>
-      <a href="/contact" class="btn-primary">Passer commande</a>
+      <a href={`${base}contact`} class="btn-primary">Passer commande</a>
     </div>
   </section>
 
@@ -115,7 +116,6 @@ import Layout from '../layouts/Layout.astro';
   .hero__bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/cigars/csco-coffret-ouvert.jpg');
     background-size: cover;
     background-position: center;
     filter: brightness(0.3);
