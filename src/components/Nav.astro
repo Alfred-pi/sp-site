@@ -1,0 +1,252 @@
+---
+const links = [
+  { href: "/", label: "Accueil" },
+  { href: "/vodka", label: "Vodka" },
+  { href: "/cigares", label: "Cigares" },
+  { href: "/services", label: "Services" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<nav class="nav" id="nav">
+  <div class="nav__container">
+    <a href="/" class="nav__logo">
+      <img src="/images/brand/SP_horizontale_dark_transparent.svg" alt="Swiss Prestige" class="nav__logo-img" />
+    </a>
+
+    <ul class="nav__links">
+      {links.map(link => (
+        <li>
+          <a href={link.href} class="nav__link">{link.label}</a>
+        </li>
+      ))}
+    </ul>
+
+    <button class="nav__menu-toggle" id="menu-toggle" aria-label="Menu">
+      <span class="nav__menu-bar"></span>
+      <span class="nav__menu-bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile fullscreen menu -->
+  <div class="nav__mobile" id="mobile-menu">
+    <button class="nav__mobile-close" id="menu-close" aria-label="Fermer">&times;</button>
+    <ul class="nav__mobile-links">
+      {links.map(link => (
+        <li>
+          <a href={link.href} class="nav__mobile-link">{link.label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-nav);
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  }
+
+  .nav.scrolled {
+    background: rgba(8, 8, 8, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav__container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav__logo {
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav__logo:hover {
+    opacity: 0.8;
+    color: inherit;
+  }
+
+  .nav__logo-img {
+    height: 80px;
+    width: auto;
+  }
+
+  .nav__links {
+    display: flex;
+    gap: 48px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav__link {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-60);
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .nav__link:hover {
+    color: var(--gold);
+  }
+
+  /* Hamburger */
+  .nav__menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav__menu-bar {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--white-60);
+    transition: background 0.3s ease;
+  }
+
+  .nav__menu-toggle:hover .nav__menu-bar {
+    background: var(--gold);
+  }
+
+  /* Mobile menu */
+  .nav__mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--black);
+    z-index: var(--z-mobile-menu);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .nav__mobile.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav__mobile-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    background: none;
+    border: none;
+    color: var(--white-60);
+    font-size: 48px;
+    font-weight: 300;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease;
+  }
+
+  .nav__mobile-close:hover {
+    color: var(--gold);
+  }
+
+  .nav__mobile-links {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav__mobile-links li {
+    margin-bottom: 32px;
+  }
+
+  .nav__mobile-link {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--white);
+    transition: color 0.3s ease;
+  }
+
+  .nav__mobile-link:hover {
+    color: var(--gold);
+  }
+
+  @media (max-width: 1024px) {
+    .nav__links {
+      display: none;
+    }
+    .nav__menu-toggle {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav__container {
+      padding: 16px 24px;
+    }
+    .nav__logo-img {
+      height: 64px;
+    }
+    .nav__mobile-link {
+      font-size: 32px;
+    }
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('nav');
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuClose = document.getElementById('menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  // Scroll effect
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+  }
+
+  // Mobile menu
+  menuToggle?.addEventListener('click', () => {
+    mobileMenu?.classList.add('active');
+  });
+
+  menuClose?.addEventListener('click', () => {
+    mobileMenu?.classList.remove('active');
+  });
+
+  const mobileLinks = document.querySelectorAll('.nav__mobile-link');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.remove('active');
+    });
+  });
+</script>

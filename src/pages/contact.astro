@@ -1,0 +1,303 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact | Swiss Prestige — Genève, Suisse" description="Contactez Swiss Prestige à Genève pour une consultation personnalisée, passer commande ou organiser un événement corporate avec nos produits de luxe.">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <div class="t-label">Prenez contact</div>
+      <h1 class="hero__title">Parlons</h1>
+      <p class="hero__subtitle">Genève, Suisse</p>
+    </div>
+  </section>
+
+  <!-- CONTACT CONTENT -->
+  <section class="contact-section">
+    <div class="contact-section__inner">
+      <!-- INFO -->
+      <div class="contact-info">
+        <div class="t-label">Coordonnées</div>
+        <h2 class="contact-info__heading">Swiss Prestige</h2>
+        <div class="divider-gold"></div>
+
+        <div class="contact-info__items">
+          <div class="contact-info__item">
+            <div class="contact-info__label">Adresse</div>
+            <div class="contact-info__value">Genève, Suisse</div>
+          </div>
+          <div class="contact-info__item">
+            <div class="contact-info__label">Email</div>
+            <div class="contact-info__value">
+              <a href="mailto:contact@swiss-prestige.ch">contact@swiss-prestige.ch</a>
+            </div>
+          </div>
+          <div class="contact-info__item">
+            <div class="contact-info__label">Réseaux</div>
+            <div class="contact-info__value">
+              <a href="https://instagram.com/swissprestige" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+          <div class="contact-info__item">
+            <div class="contact-info__label">Horaires</div>
+            <div class="contact-info__value">Lun — Ven, 9h — 18h</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="contact-form">
+        <div class="t-label">Écrivez-nous</div>
+        <h3 class="contact-form__heading">Votre message</h3>
+        <div class="divider-gold"></div>
+
+        <form class="form" id="contact-form">
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="name">Nom</label>
+              <input type="text" id="name" name="name" class="form__input" placeholder="Votre nom" required />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="email">Email</label>
+              <input type="email" id="email" name="email" class="form__input" placeholder="votre@email.com" required />
+            </div>
+          </div>
+
+          <div class="form__group">
+            <label class="form__label" for="subject">Sujet</label>
+            <select id="subject" name="subject" class="form__input">
+              <option value="general">Question générale</option>
+              <option value="commande">Passer commande</option>
+              <option value="conciergerie">Service conciergerie</option>
+              <option value="corporate">Événement corporate</option>
+              <option value="partenariat">Partenariat</option>
+            </select>
+          </div>
+
+          <div class="form__group">
+            <label class="form__label" for="message">Message</label>
+            <textarea id="message" name="message" class="form__input form__textarea" placeholder="Décrivez votre demande..." rows="6" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* HERO */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    min-height: 400px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/scenes/bg-mountain.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.3);
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(8,8,8,0.1) 0%, rgba(8,8,8,0.7) 100%);
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    padding: 0 var(--pad-x) 80px;
+    max-width: var(--container-xl);
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(56px, 8vw, 100px);
+    line-height: 0.95;
+    color: var(--white);
+    margin: 16px 0;
+  }
+
+  .hero__subtitle {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white-60);
+  }
+
+  /* CONTACT SECTION */
+  .contact-section {
+    padding: var(--section-lg) var(--pad-x);
+    background: var(--black);
+  }
+
+  .contact-section__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 100px;
+    max-width: var(--container-xl);
+    margin: 0 auto;
+  }
+
+  /* INFO */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-info__heading {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--white);
+  }
+
+  .contact-info__items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .contact-info__item {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-info__label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .contact-info__value {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--white-60);
+  }
+
+  .contact-info__value a {
+    color: var(--white-60);
+    transition: color 0.3s ease;
+  }
+
+  .contact-info__value a:hover {
+    color: var(--gold);
+  }
+
+  /* FORM */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-form__heading {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 300;
+    color: var(--white);
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 12px;
+  }
+
+  .form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form__label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .form__input {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--white);
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    transition: border-color 0.3s ease;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .form__input::placeholder {
+    color: var(--white-20);
+  }
+
+  .form__input:focus {
+    border-color: var(--gold);
+  }
+
+  .form__textarea {
+    resize: vertical;
+    min-height: 160px;
+  }
+
+  select.form__input {
+    cursor: pointer;
+  }
+
+  select.form__input option {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .contact-section__inner {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+
+    .form__row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

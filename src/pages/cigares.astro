@@ -1,0 +1,349 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Cigares Mont Noir | Cigares Premium Roulés Main | Swiss Prestige" description="Cigares Mont Noir, roulés à la main avec un tabac premium sélectionné. Coffrets d'exception disponibles via le service de conciergerie Swiss Prestige.">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <div class="t-label">Cigares premium roulés main</div>
+      <h1 class="hero__title">Mont Noir</h1>
+      <p class="hero__subtitle">Roulés à la main en République Dominicaine</p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story">
+    <div class="story__inner">
+      <div class="story__text">
+        <div class="t-label">L'histoire</div>
+        <h2 class="story__heading">L'art<br/>du cigare</h2>
+        <div class="divider-gold"></div>
+        <p class="t-body">Mont Noir est né d'une collaboration directe avec des producteurs dominicains parmi les plus respectés au monde. Le tabac est sélectionné feuille par feuille, roulé à la main par des artisans qui ont passé des décennies à perfectionner leur geste.</p>
+        <p class="t-body">L'affinage dure plusieurs mois. Le résultat : un cigare au profil aromatique dense — boisé, légèrement épicé, avec une finale longue et complexe. Mont Noir s'adresse à ceux qui prennent le temps de savourer.</p>
+      </div>
+      <div class="story__image">
+        <img src="/images/cigars/csco-coffret-ouvert.jpg" alt="Coffret Mont Noir ouvert — cigares premium roulés à la main" />
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTION -->
+  <section class="collection">
+    <div class="collection__inner">
+      <div class="collection__header">
+        <div class="t-label">La collection</div>
+        <h2 class="t-section">Coffrets d'exception</h2>
+        <div class="divider-gold"></div>
+      </div>
+
+      <div class="collection__grid">
+        <div class="collection-card">
+          <div class="collection-card__image">
+            <img src="/images/cigars/csco-coffrets-cigare.jpg" alt="Coffrets cigares Mont Noir — sélection signature" />
+          </div>
+          <div class="collection-card__info">
+            <h3 class="collection-card__name">Coffret Signature</h3>
+            <p class="collection-card__desc">L'essentiel de Mont Noir réuni dans un coffret. Cinq cigares sélectionnés pour offrir un panorama complet de la gamme — du plus accessible au plus corsé.</p>
+          </div>
+        </div>
+
+        <div class="collection-card">
+          <div class="collection-card__image">
+            <img src="/images/cigars/csco-coffret-ouvert.jpg" alt="Cigare Mont Noir — détail de la bague et humidor" />
+          </div>
+          <div class="collection-card__info">
+            <h3 class="collection-card__name">Réserve Privée</h3>
+            <p class="collection-card__desc">Des pièces affinées plus longtemps, réservées aux palais exigeants. Notes de cuir, cacao, pointe de terre humide. Corps plein, finale persistante.</p>
+          </div>
+        </div>
+
+        <div class="collection-card">
+          <div class="collection-card__image">
+            <img src="/images/cigars/csco-coffret-promo.jpg" alt="Coffret Mont Noir édition limitée — cigares numérotés" />
+          </div>
+          <div class="collection-card__info">
+            <h3 class="collection-card__name">Édition Limitée</h3>
+            <p class="collection-card__desc">Productions restreintes, coffrets numérotés. Chaque édition met en avant un terroir ou un assemblage particulier. Disponible uniquement via notre conciergerie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIRING -->
+  <section class="pairing">
+    <div class="pairing__inner">
+      <div class="pairing__image">
+        <img src="/images/vodka/hoverla-cigare-gros-plan.jpg" alt="Accord cigare Mont Noir et vodka Hoverla — dégustation premium" />
+      </div>
+      <div class="pairing__text">
+        <div class="t-label">L'accord parfait</div>
+        <h2 class="pairing__heading">Mont Noir<br/>& Hoverla</h2>
+        <div class="divider-gold"></div>
+        <p class="t-body">La pureté minérale d'Hoverla nettoie le palais entre chaque tirage et révèle des arômes que le cigare seul ne libère pas. L'Original pour un Signature, le Miel pour une Réserve — chaque combinaison a été testée par nos équipes pour trouver l'équilibre parfait.</p>
+        <a href="/vodka" class="btn-primary">Découvrir Hoverla</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cigare-cta">
+    <div class="cigare-cta__inner">
+      <h2 class="cigare-cta__title">Commander Mont Noir</h2>
+      <p class="t-body" style="text-align:center; max-width:500px; margin:0 auto 40px;">Nos coffrets sont disponibles exclusivement via Swiss Prestige. Contactez notre équipe pour composer votre sélection.</p>
+      <a href="/contact" class="btn-primary">Passer commande</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* HERO */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 500px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/cigars/csco-coffret-ouvert.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.3);
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(8,8,8,0.1) 0%, rgba(8,8,8,0.7) 100%);
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    padding: 0 var(--pad-x) 80px;
+    max-width: var(--container-xl);
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(56px, 8vw, 100px);
+    line-height: 0.95;
+    color: var(--white);
+    margin: 16px 0;
+  }
+
+  .hero__subtitle {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white-60);
+  }
+
+  /* STORY */
+  .story {
+    padding: var(--section-lg) var(--pad-x);
+    background: var(--black);
+  }
+
+  .story__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: var(--container-xl);
+    margin: 0 auto;
+  }
+
+  .story__text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .story__heading {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+  }
+
+  .story__image {
+    overflow: hidden;
+  }
+
+  .story__image img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+  }
+
+  /* COLLECTION */
+  .collection {
+    padding: var(--section-lg) var(--pad-x);
+    background: var(--black-warm);
+  }
+
+  .collection__inner {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+  }
+
+  .collection__header {
+    margin-bottom: 80px;
+    max-width: 600px;
+  }
+
+  .collection__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .collection-card {
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+  }
+
+  .collection-card:hover {
+    border-color: var(--gold-dim);
+  }
+
+  .collection-card__image {
+    overflow: hidden;
+    height: 320px;
+    background: #0D0A06;
+  }
+
+  .collection-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .collection-card:hover .collection-card__image img {
+    transform: scale(1.05);
+  }
+
+  .collection-card__info {
+    padding: 24px;
+  }
+
+  .collection-card__name {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .collection-card__desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--white-40);
+    line-height: 1.7;
+  }
+
+  /* PAIRING */
+  .pairing {
+    padding: var(--section-lg) var(--pad-x);
+    background: var(--black);
+  }
+
+  .pairing__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: var(--container-xl);
+    margin: 0 auto;
+  }
+
+  .pairing__image {
+    overflow: hidden;
+  }
+
+  .pairing__image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  .pairing__text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .pairing__heading {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+  }
+
+  /* CTA */
+  .cigare-cta {
+    padding: var(--section-lg) var(--pad-x);
+    background: var(--black-warm);
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+
+  .cigare-cta__inner {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+  }
+
+  .cigare-cta__title {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .story__inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .story__image img {
+      height: 360px;
+    }
+
+    .collection__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pairing__inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .pairing__image img {
+      height: 320px;
+    }
+  }
+</style>
