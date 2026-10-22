@@ -1,13 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const base = import.meta.env.BASE_URL;
+const B = import.meta.env.BASE_URL ? import.meta.env.BASE_URL.replace(/\/?$/, '/') : '/';
 ---
 
 <Layout title="Cigares Mont Noir | Cigares Premium Roulés Main | Swiss Prestige" description="Cigares Mont Noir, roulés à la main avec un tabac premium sélectionné. Coffrets d'exception disponibles via le service de conciergerie Swiss Prestige.">
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero__bg" style={`background-image: url('${base}images/cigars/csco-coffret-ouvert.jpg')`}></div>
+    <div class="hero__bg parallax-bg" style={`background-image: url(${B}images/cigars/csco-coffret-ouvert.jpg)`}></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <div class="t-label">Cigares premium roulés main</div>
@@ -17,7 +17,7 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- STORY -->
-  <section class="story">
+  <section class="story" data-reveal>
     <div class="story__inner">
       <div class="story__text">
         <div class="t-label">L'histoire</div>
@@ -27,13 +27,13 @@ const base = import.meta.env.BASE_URL;
         <p class="t-body">L'affinage dure plusieurs mois. Le résultat : un cigare au profil aromatique dense — boisé, légèrement épicé, avec une finale longue et complexe. Mont Noir s'adresse à ceux qui prennent le temps de savourer.</p>
       </div>
       <div class="story__image">
-        <img src={`${base}images/cigars/csco-coffret-ouvert.jpg`} alt="Coffret Mont Noir ouvert — cigares premium roulés à la main" />
+        <img src={B + "images/cigars/csco-coffret-ouvert.jpg"} alt="Coffret Mont Noir ouvert — cigares premium roulés à la main" />
       </div>
     </div>
   </section>
 
   <!-- COLLECTION -->
-  <section class="collection">
+  <section class="collection" data-reveal>
     <div class="collection__inner">
       <div class="collection__header">
         <div class="t-label">La collection</div>
@@ -44,7 +44,7 @@ const base = import.meta.env.BASE_URL;
       <div class="collection__grid">
         <div class="collection-card">
           <div class="collection-card__image">
-            <img src={`${base}images/cigars/csco-coffrets-cigare.jpg`} alt="Coffrets cigares Mont Noir — sélection signature" />
+            <img src={B + "images/cigars/csco-coffrets-cigare.jpg"} alt="Coffrets cigares Mont Noir — sélection signature" />
           </div>
           <div class="collection-card__info">
             <h3 class="collection-card__name">Coffret Signature</h3>
@@ -54,7 +54,7 @@ const base = import.meta.env.BASE_URL;
 
         <div class="collection-card">
           <div class="collection-card__image">
-            <img src={`${base}images/cigars/csco-coffret-ouvert.jpg`} alt="Cigare Mont Noir — détail de la bague et humidor" />
+            <img src={B + "images/cigars/csco-coffret-ouvert.jpg"} alt="Cigare Mont Noir — détail de la bague et humidor" />
           </div>
           <div class="collection-card__info">
             <h3 class="collection-card__name">Réserve Privée</h3>
@@ -64,7 +64,7 @@ const base = import.meta.env.BASE_URL;
 
         <div class="collection-card">
           <div class="collection-card__image">
-            <img src={`${base}images/cigars/csco-coffret-promo.jpg`} alt="Coffret Mont Noir édition limitée — cigares numérotés" />
+            <img src={B + "images/cigars/csco-coffret-promo.jpg"} alt="Coffret Mont Noir édition limitée — cigares numérotés" />
           </div>
           <div class="collection-card__info">
             <h3 class="collection-card__name">Édition Limitée</h3>
@@ -76,27 +76,27 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- PAIRING -->
-  <section class="pairing">
+  <section class="pairing" data-reveal>
     <div class="pairing__inner">
       <div class="pairing__image">
-        <img src={`${base}images/vodka/hoverla-cigare-gros-plan.jpg`} alt="Accord cigare Mont Noir et vodka Hoverla — dégustation premium" />
+        <img src={B + "images/vodka/hoverla-cigare-gros-plan.jpg"} alt="Accord cigare Mont Noir et vodka Hoverla — dégustation premium" />
       </div>
       <div class="pairing__text">
         <div class="t-label">L'accord parfait</div>
         <h2 class="pairing__heading">Mont Noir<br/>& Hoverla</h2>
         <div class="divider-gold"></div>
         <p class="t-body">La pureté minérale d'Hoverla nettoie le palais entre chaque tirage et révèle des arômes que le cigare seul ne libère pas. L'Original pour un Signature, le Miel pour une Réserve — chaque combinaison a été testée par nos équipes pour trouver l'équilibre parfait.</p>
-        <a href={`${base}vodka`} class="btn-primary">Découvrir Hoverla</a>
+        <a href="/vodka" class="btn-primary">Découvrir Hoverla</a>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cigare-cta">
+  <section class="cigare-cta" data-reveal>
     <div class="cigare-cta__inner">
       <h2 class="cigare-cta__title">Commander Mont Noir</h2>
       <p class="t-body" style="text-align:center; max-width:500px; margin:0 auto 40px;">Nos coffrets sont disponibles exclusivement via Swiss Prestige. Contactez notre équipe pour composer votre sélection.</p>
-      <a href={`${base}contact`} class="btn-primary">Passer commande</a>
+      <a href="/contact" class="btn-primary">Passer commande</a>
     </div>
   </section>
 

@@ -3,8 +3,8 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
-const base = import.meta.env.BASE_URL;
 const { title = 'Swiss Prestige — Redistribution de Produits de Luxe en Suisse', description = 'Swiss Prestige, votre partenaire exclusif pour la redistribution de produits de luxe en Suisse. Vodka Hoverla, cigares Mont Noir et service de conciergerie premium à Genève.' } = Astro.props;
+const B = import.meta.env.BASE_URL ? import.meta.env.BASE_URL.replace(/\/?$/, '/') : '/';
 ---
 
 <!DOCTYPE html>
@@ -14,16 +14,142 @@ const { title = 'Swiss Prestige — Redistribution de Produits de Luxe en Suisse
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
-  <link rel="icon" type="image/svg+xml" href={`${base}images/brand/SP_crown_gold_transparent.svg`}>
+  <link rel="icon" type="image/svg+xml" href={B + "images/brand/SP_crown_gold_transparent.svg"}>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- ENTRANCE LOADER LUXE -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <img src={B + "images/brand/SP_center_white.svg"} alt="Swiss Prestige" class="loader__logo" />
+      <div class="loader__bar-track">
+        <div class="loader__bar" id="loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
   <Nav />
   <main>
     <slot />
   </main>
   <Footer />
+
+  <script>
+    /* ==============================
+       ENTRANCE LOADER
+       ============================== */
+    (function() {
+      const loader = document.getElementById('loader');
+      const bar = document.getElementById('loader-bar');
+      if (!loader) return;
+
+      // 1. Animate the bar to full width over ~2s
+      if (bar) {
+        requestAnimationFrame(() => {
+          bar.style.transition = 'width 1.8s cubic-bezier(0.4, 0, 0.2, 1)';
+          bar.style.width = '100%';
+        });
+      }
+
+      // 2. Fade out the loader after animation completes
+      setTimeout(() => {
+        loader.style.transition = 'opacity 0.8s ease, visibility 0.8s ease';
+        loader.style.opacity = '0';
+        loader.style.visibility = 'hidden';
+
+        // 3. Enable scroll animations after loader is gone
+        setTimeout(() => {
+          document.body.classList.add('loader-done');
+        }, 900);
+      }, 2200);
+    })();
+
+    /* ==============================
+       SCROLL REVEAL — IntersectionObserver
+       ============================== */
+    (function() {
+      // Wait for loader to finish before observing
+      const initReveal = () => {
+        // Single elements with data-reveal
+        const revealElements = document.querySelectorAll('[data-reveal]');
+        if (revealElements.length) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const delay = parseInt(entry.target.dataset.revealDelay) || 0;
+                setTimeout(() => {
+                  entry.target.classList.add('revealed');
+                }, delay);
+                observer.unobserve(entry.target);
+              }
+            });
+          }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -60px 0px'
+          });
+          revealElements.forEach(el => observer.observe(el));
+        }
+
+        // Stagger containers: children animate one by one
+        const staggerContainers = document.querySelectorAll('[data-reveal-stagger]');
+        if (staggerContainers.length) {
+          const staggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const children = entry.target.children;
+                const staggerDelay = parseInt(entry.target.dataset.staggerDelay) || 100;
+                Array.from(children).forEach((child, index) => {
+                  setTimeout(() => {
+                    child.classList.add('revealed-stagger');
+                  }, index * staggerDelay);
+                });
+                staggerObserver.unobserve(entry.target);
+              }
+            });
+          }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -60px 0px'
+          });
+          staggerContainers.forEach(el => staggerObserver.observe(el));
+        }
+      };
+
+      if (document.body.classList.contains('loader-done')) {
+        initReveal();
+      } else {
+        // Listen for loader completion
+        const checkLoader = setInterval(() => {
+          if (document.body.classList.contains('loader-done')) {
+            clearInterval(checkLoader);
+            initReveal();
+          }
+        }, 100);
+      }
+    })();
+
+    /* ==============================
+       PARALLAX HERO
+       ============================== */
+    (function() {
+      const heroBg = document.querySelector('.hero__bg');
+      if (!heroBg) return;
+
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const scrolled = window.scrollY;
+            const maxScroll = window.innerHeight;
+            const progress = Math.min(scrolled / maxScroll, 1);
+            heroBg.style.transform = `translateY(${progress * 80}px) scale(${1 + progress * 0.05})`;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

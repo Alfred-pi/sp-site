@@ -1,18 +1,18 @@
 ---
-const base = import.meta.env.BASE_URL;
+const B = import.meta.env.BASE_URL ? import.meta.env.BASE_URL.replace(/\/?$/, '/') : '/';
 const links = [
-  { href: base, label: "Accueil" },
-  { href: `${base}vodka`, label: "Vodka" },
-  { href: `${base}cigares`, label: "Cigares" },
-  { href: `${base}services`, label: "Services" },
-  { href: `${base}contact`, label: "Contact" },
+  { href: B, label: "Accueil" },
+  { href: B + "vodka", label: "Vodka" },
+  { href: B + "cigares", label: "Cigares" },
+  { href: B + "services", label: "Services" },
+  { href: B + "contact", label: "Contact" },
 ];
 ---
 
 <nav class="nav" id="nav">
   <div class="nav__container">
-    <a href={base} class="nav__logo">
-      <img src={`${base}images/brand/SP_horizontale_dark_transparent.svg`} alt="Swiss Prestige" class="nav__logo-img" />
+    <a href={B} class="nav__logo">
+      <img src={B + "images/brand/SP_horizontale_white.svg"} alt="Swiss Prestige" class="nav__logo-img" />
     </a>
 
     <ul class="nav__links">

@@ -201,17 +201,16 @@ section {
 }
 
 /* ========================================
-   ANIMATIONS
+   ANIMATIONS — KEYFRAMES
    ======================================== */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
@@ -219,8 +218,190 @@ section {
   to { opacity: 1; }
 }
 
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes goldPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes loaderPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+/* ========================================
+   SCROLL REVEAL — default hidden state
+   ======================================== */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-reveal="fadeIn"] {
+  opacity: 0;
+  transform: none;
+  transition: opacity 0.8s ease;
+}
+
+[data-reveal="fadeIn"].revealed {
+  opacity: 1;
+}
+
+[data-reveal="scaleIn"] {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-reveal="scaleIn"].revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-reveal="slideLeft"] {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-reveal="slideLeft"].revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+[data-reveal="slideRight"] {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-reveal="slideRight"].revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered children inside a reveal container */
+[data-reveal-stagger] > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loader-done [data-reveal-stagger] > .revealed-stagger {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   ENTRANCE LOADER
+   ======================================== */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.loader__logo {
+  width: 200px;
+  height: auto;
+  opacity: 0;
+  animation: fadeDown 0.8s ease 0.3s forwards;
+}
+
+.loader__bar-track {
+  width: 200px;
+  height: 1px;
+  background: rgba(200, 168, 78, 0.15);
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeIn 0.5s ease 0.6s forwards;
+}
+
+.loader__bar {
+  width: 0%;
+  height: 100%;
+  background: var(--gold);
+  transform-origin: left;
+}
+
+/* ========================================
+   PARALLAX WRAPPER
+   ======================================== */
+.parallax-bg {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* ========================================
+   GOLD SHIMMER HOVER
+   ======================================== */
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(200, 168, 78, 0.3) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  transition: background-position 0.6s ease;
+}
+
+.gold-shimmer:hover {
+  background-position: 200% center;
+}
+
+/* Utility */
 .fade-up {
   animation: fadeUp 0.8s ease forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
 }
 
 /* ========================================
