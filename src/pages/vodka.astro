@@ -1,15 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const base = import.meta.env.BASE_URL;
+const B = import.meta.env.BASE_URL ? import.meta.env.BASE_URL.replace(/\/?$/, '/') : '/';
 
 const variants = [
-  { name: "Original", desc: "La pureté absolue. Eau de source des Carpates et blé ukrainien.", img: `${base}images/vodka/hoverla-official-1.jpg` },
-  { name: "Honey", desc: "Miel de fleurs sauvages des montagnes. Douceur et caractère.", img: `${base}images/vodka/hoverla-official-2.jpg` },
-  { name: "Birch", desc: "Sève de bouleau infusée. Fraîcheur minérale unique.", img: `${base}images/vodka/hoverla-official-3.jpg` },
-  { name: "Pepper", desc: "Piment rouge des Carpates. Chaleur et intensité.", img: `${base}images/vodka/hoverla-official-4.jpg` },
-  { name: "Cranberry", desc: "Canneberges sauvages cueillies à maturité. Fruité et vif.", img: `${base}images/vodka/hoverla-official-5.jpg` },
-  { name: "Herbal", desc: "Herbes aromatiques des prairies d'altitude. Complexe et subtil.", img: `${base}images/vodka/hoverla-official-6.jpg` },
-  { name: "Lemon", desc: "Zestes de citron frais. Vivacité et élégance.", img: `${base}images/vodka/hoverla-official-7.jpg` },
+  { name: "Original", desc: "La pureté absolue. Eau de source des Carpates et blé ukrainien.", img: "/images/vodka/hoverla-official-1.jpg" },
+  { name: "Honey", desc: "Miel de fleurs sauvages des montagnes. Douceur et caractère.", img: "/images/vodka/hoverla-official-2.jpg" },
+  { name: "Birch", desc: "Sève de bouleau infusée. Fraîcheur minérale unique.", img: "/images/vodka/hoverla-official-3.jpg" },
+  { name: "Pepper", desc: "Piment rouge des Carpates. Chaleur et intensité.", img: "/images/vodka/hoverla-official-4.jpg" },
+  { name: "Cranberry", desc: "Canneberges sauvages cueillies à maturité. Fruité et vif.", img: "/images/vodka/hoverla-official-5.jpg" },
+  { name: "Herbal", desc: "Herbes aromatiques des prairies d'altitude. Complexe et subtil.", img: "/images/vodka/hoverla-official-6.jpg" },
+  { name: "Lemon", desc: "Zestes de citron frais. Vivacité et élégance.", img: "/images/vodka/hoverla-official-7.jpg" },
 ];
 ---
 
@@ -17,7 +17,7 @@ const variants = [
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero__bg" style={`background-image: url('${base}images/scenes/hoverla-mountain.jpg')`}></div>
+    <div class="hero__bg parallax-bg" style={`background-image: url(${B}images/scenes/hoverla-mountain.jpg)`}></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <div class="t-label">Vodka artisanale ukrainienne</div>
@@ -27,7 +27,7 @@ const variants = [
   </section>
 
   <!-- STORY -->
-  <section class="story">
+  <section class="story" data-reveal>
     <div class="story__inner">
       <div class="story__text">
         <div class="t-label">L'histoire</div>
@@ -37,13 +37,13 @@ const variants = [
         <p class="t-body">Chaque bouteille est distillée en petits lots. Sept infusions différentes — du classique au miel de montagne, en passant par la sève de bouleau — qui explorent chacune un aspect de ce terroir unique. Hoverla porte le nom du plus haut sommet d'Ukraine. Ce n'est pas un hasard.</p>
       </div>
       <div class="story__image">
-        <img src={`${base}images/vodka/hoverla-official-1.jpg`} alt="Bouteille Hoverla Original — vodka artisanale premium des Carpates" />
+        <img src={B + "images/vodka/hoverla-official-1.jpg"} alt="Bouteille Hoverla Original — vodka artisanale premium des Carpates" />
       </div>
     </div>
   </section>
 
   <!-- VARIANTS GRID -->
-  <section class="variants">
+  <section class="variants" data-reveal>
     <div class="variants__inner">
       <div class="variants__header">
         <div class="t-label">La collection</div>
@@ -51,11 +51,11 @@ const variants = [
         <div class="divider-gold"></div>
       </div>
 
-      <div class="variants__grid">
+      <div class="variants__grid" data-reveal-stagger>
         {variants.map((v) => (
           <div class="variant-card">
             <div class="variant-card__image">
-              <img src={v.img} alt={`Vodka Hoverla ${v.name} — saveur artisanale premium`} />
+              <img src={B + v.img.replace(/^\//, '')} alt={`Vodka Hoverla ${v.name} — saveur artisanale premium`} />
             </div>
             <div class="variant-card__info">
               <h3 class="variant-card__name">{v.name}</h3>
@@ -68,18 +68,18 @@ const variants = [
   </section>
 
   <!-- LINEUP -->
-  <section class="lineup">
+  <section class="lineup" data-reveal>
     <div class="lineup__inner">
-      <img src={`${base}images/vodka/hoverla-scene.jpg`} alt="Verres Hoverla Premium Vodka — dégustation" class="lineup__img" />
+      <img src={B + "images/vodka/hoverla-scene.jpg"} alt="Verres Hoverla Premium Vodka — dégustation" class="lineup__img" />
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="vodka-cta">
+  <section class="vodka-cta" data-reveal>
     <div class="vodka-cta__inner">
       <h2 class="vodka-cta__title">Commander Hoverla</h2>
       <p class="t-body" style="text-align:center; max-width:500px; margin:0 auto 40px;">Distribuée exclusivement par Swiss Prestige en Suisse. Contactez notre équipe pour choisir vos saveurs.</p>
-      <a href={`${base}contact`} class="btn-primary">Passer commande</a>
+      <a href="/contact" class="btn-primary">Passer commande</a>
     </div>
   </section>
 

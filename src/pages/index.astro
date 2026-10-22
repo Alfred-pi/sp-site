@@ -1,17 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const base = import.meta.env.BASE_URL;
+const B = import.meta.env.BASE_URL ? import.meta.env.BASE_URL.replace(/\/?$/, '/') : '/';
 ---
 
 <Layout title="Swiss Prestige | Redistribution de Produits de Luxe en Suisse" description="Swiss Prestige, votre partenaire exclusif pour la redistribution de produits de luxe en Suisse. Vodka Hoverla, cigares Mont Noir et service de conciergerie premium à Genève.">
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero__bg" style={`background-image: url('${base}images/vodka/hoverla-scene.jpg')`}></div>
+    <div class="hero__bg parallax-bg" style={`background-image: url(${B}images/vodka/hoverla-scene.jpg)`}></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <!-- crown removed -->
-      <h1 class="hero__title">L'accès aux<br/>produits rares</h1>
+      <div class="hero__gold-line"></div>
+      <h1 class="hero__title">
+        <span class="hero__title-line" style="animation-delay: 2.6s">L'accès aux</span>
+        <span class="hero__title-line" style="animation-delay: 2.9s">produits rares</span>
+      </h1>
       <p class="hero__subtitle">Conciergerie et livraison premium en Suisse</p>
       <a href="#selection" class="hero__cta">
         <span>Découvrir</span>
@@ -23,8 +26,8 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- PILLARS -->
-  <section class="pillars">
-    <div class="pillars__inner">
+  <section class="pillars" data-reveal>
+    <div class="pillars__inner" data-reveal-stagger>
       <div class="pillar">
         <div class="pillar__number">01</div>
         <h3 class="pillar__title">Sélection</h3>
@@ -46,7 +49,7 @@ const base = import.meta.env.BASE_URL;
   <!-- PRODUCT SHOWCASE: HOVERLA -->
   <section id="selection" class="showcase">
     <div class="showcase__inner">
-      <div class="showcase__header">
+      <div class="showcase__header" data-reveal>
         <div class="t-label">Nos premières sélections</div>
         <h2 class="t-section">Nos premières<br/>sélections</h2>
         <div class="divider-gold"></div>
@@ -57,15 +60,15 @@ const base = import.meta.env.BASE_URL;
   <!-- HOVERLA -->
   <section class="product-row">
     <div class="product-row__inner">
-      <div class="product-row__image">
-        <img src={`${base}images/vodka/hoverla-gamme-bar.jpg`} alt="Vodka Hoverla — gamme complète de sept saveurs artisanales" />
+      <div class="product-row__image" data-reveal="slideLeft">
+        <img src={B + "images/vodka/hoverla-gamme-bar.jpg"} alt="Vodka Hoverla — gamme complète de sept saveurs artisanales" />
       </div>
-      <div class="product-row__text">
+      <div class="product-row__text" data-reveal="slideRight" data-reveal-delay="200">
         <div class="t-label">Vodka artisanale</div>
         <h2 class="product-row__title">Hoverla</h2>
         <div class="divider-gold"></div>
         <p class="t-body">Distillée avec l'eau des Carpates et du blé d'altitude ukrainien. Sept infusions distinctes — de l'original cristallin au miel de montagne. Introuvable en Suisse avant Swiss Prestige.</p>
-        <a href={`${base}vodka`} class="btn-primary">Explorer la gamme</a>
+        <a href="/vodka" class="btn-primary gold-shimmer">Explorer la gamme</a>
       </div>
     </div>
   </section>
@@ -73,42 +76,42 @@ const base = import.meta.env.BASE_URL;
   <!-- MONT NOIR -->
   <section class="product-row product-row--reversed">
     <div class="product-row__inner">
-      <div class="product-row__image">
-        <img src={`${base}images/cigars/csco-coffret-ouvert.jpg`} alt="Cigares Mont Noir — coffret ouvert avec cigares roulés main" />
+      <div class="product-row__image" data-reveal="slideRight">
+        <img src={B + "images/cigars/csco-coffret-ouvert.jpg"} alt="Cigares Mont Noir — coffret ouvert avec cigares roulés main" />
       </div>
-      <div class="product-row__text">
+      <div class="product-row__text" data-reveal="slideLeft" data-reveal-delay="200">
         <div class="t-label">Cigares premium</div>
         <h2 class="product-row__title">Mont Noir</h2>
         <div class="divider-gold"></div>
         <p class="t-body">Roulés à la main en République Dominicaine par des maîtres artisans. Tabac sélectionné feuille par feuille, affinage de plusieurs mois. Proposés en coffrets numérotés, exclusivement via notre conciergerie.</p>
-        <a href={`${base}cigares`} class="btn-primary">Découvrir la collection</a>
+        <a href="/cigares" class="btn-primary gold-shimmer">Découvrir la collection</a>
       </div>
     </div>
   </section>
 
   <!-- APP TEASER -->
-  <section class="app-teaser">
+  <section class="app-teaser" data-reveal>
     <div class="app-teaser__inner">
-      <div class="app-teaser__content">
+      <div class="app-teaser__content" data-reveal="slideRight" data-reveal-delay="100">
         <div class="t-label">Bientôt disponible</div>
         <h2 class="app-teaser__title">L'application<br/>conciergerie</h2>
         <div class="divider-gold"></div>
         <p class="t-body">Parcourez nos sélections, commandez en quelques gestes, suivez votre livraison en temps réel. Tout le service Swiss Prestige, accessible depuis votre téléphone.</p>
-        <a href={`${base}services`} class="btn-secondary">En savoir plus</a>
+        <a href="/services" class="btn-secondary">En savoir plus</a>
       </div>
-      <div class="app-teaser__visual">
-        <img src={`${base}images/brand/SP_crown_gold_transparent.svg`} alt="Swiss Prestige — application de conciergerie de luxe" class="app-teaser__icon" />
+      <div class="app-teaser__visual" data-reveal="scaleIn" data-reveal-delay="300">
+        <img src={B + "images/brand/SP_crown_gold_transparent.svg"} alt="Swiss Prestige — application de conciergerie de luxe" class="app-teaser__icon" />
       </div>
     </div>
   </section>
 
   <!-- CTA SECTION -->
-  <section class="cta-section">
-    <div class="cta-section__bg" style={`background-image: url('${base}images/scenes/bg-bar-luxe.jpg')`}></div>
+  <section class="cta-section" data-reveal>
+    <div class="cta-section__bg parallax-bg" style={`background-image: url(${B}images/scenes/bg-bar-luxe.jpg)`}></div>
     <div class="cta-section__content">
       <h2 class="cta-section__title">Écrivez-nous</h2>
       <p class="t-body" style="text-align:center; max-width:600px; margin:0 auto 40px;">Dites-nous ce que vous aimez. Notre équipe vous recontacte sous 24 heures pour composer votre première sélection sur mesure.</p>
-      <a href={`${base}contact`} class="btn-primary">Prendre contact</a>
+      <a href="/contact" class="btn-primary">Prendre contact</a>
     </div>
   </section>
 
@@ -150,6 +153,20 @@ const base = import.meta.env.BASE_URL;
     margin: 0 auto;
   }
 
+  /* Gold line that draws in from left */
+  .hero__gold-line {
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 40px;
+    animation: drawGoldLine 1.2s cubic-bezier(0.4, 0, 0.2, 1) 2.4s forwards;
+  }
+
+  @keyframes drawGoldLine {
+    from { width: 0; }
+    to { width: 80px; }
+  }
+
   .hero__title {
     font-family: var(--font-display);
     font-weight: 300;
@@ -158,7 +175,18 @@ const base = import.meta.env.BASE_URL;
     letter-spacing: -0.01em;
     color: var(--white);
     margin-bottom: 24px;
-    animation: fadeUp 1s ease forwards;
+  }
+
+  .hero__title-line {
+    display: block;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: heroTitleIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes heroTitleIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .hero__subtitle {
@@ -171,7 +199,8 @@ const base = import.meta.env.BASE_URL;
     max-width: 500px;
     margin: 0 0 48px;
     opacity: 0;
-    animation: fadeUp 1s ease 0.3s forwards;
+    transform: translateY(20px);
+    animation: heroTitleIn 0.8s ease 3.2s forwards;
   }
 
   .hero__cta {
@@ -185,13 +214,33 @@ const base = import.meta.env.BASE_URL;
     text-transform: uppercase;
     color: var(--gold);
     opacity: 0;
-    animation: fadeUp 1s ease 0.5s forwards;
+    transform: translateY(20px);
+    animation: heroTitleIn 0.8s ease 3.5s forwards;
     transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero__cta::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .hero__cta:hover {
     transform: translateY(8px);
     color: var(--gold);
+  }
+
+  .hero__cta:hover::after {
+    transform: scaleX(1);
   }
 
   .hero__arrow {
